@@ -27,8 +27,10 @@ st.markdown("---")
 
 # --- Saved dates selector ---
 if saved_dates:
+    last_saved_key = list(saved_dates.keys())[-1]
     options = ["— enter manually —"] + list(saved_dates.keys())
-    selected_id = st.selectbox("Load a saved date:", options)
+    default_index = options.index(last_saved_key)
+    selected_id = st.selectbox("Load a saved date:", options, index=default_index)
 else:
     selected_id = None
 
@@ -52,6 +54,7 @@ with col2:
     unit = st.selectbox(
         "Show countdown in:",
         options=["Days", "Hours", "Minutes"],
+        index=1,
     )
 
 # --- Save a date ---
